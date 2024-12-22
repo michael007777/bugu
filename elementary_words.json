@@ -1,0 +1,906 @@
+{
+  "version": "1.0",
+  "total_words": 800,
+  "categories": {
+    "numbers": [
+      {
+        "word": "零",
+        "english": "zero",
+        "phonetic": "/ˈzɪroʊ/",
+        "level": 1
+      },
+      {
+        "word": "一",
+        "english": "one",
+        "phonetic": "/wʌn/",
+        "level": 1
+      },
+      {
+        "word": "二",
+        "english": "two",
+        "phonetic": "/tuː/",
+        "level": 1
+      },
+      {
+        "word": "三",
+        "english": "three",
+        "phonetic": "/θriː/",
+        "level": 1
+      },
+      {
+        "word": "四",
+        "english": "four",
+        "phonetic": "/fɔːr/",
+        "level": 1
+      }
+    ],
+    "colors": [
+      {
+        "word": "红色",
+        "english": "red",
+        "phonetic": "/red/",
+        "level": 1
+      },
+      {
+        "word": "蓝色",
+        "english": "blue",
+        "phonetic": "/bluː/",
+        "level": 1
+      },
+      {
+        "word": "黄色",
+        "english": "yellow",
+        "phonetic": "/ˈjeloʊ/",
+        "level": 1
+      },
+      {
+        "word": "绿色",
+        "english": "green",
+        "phonetic": "/ɡriːn/",
+        "level": 1
+      },
+      {
+        "word": "黑色",
+        "english": "black",
+        "phonetic": "/blæk/",
+        "level": 1
+      }
+    ],
+    "animals": [
+      {
+        "word": "猫",
+        "english": "cat",
+        "phonetic": "/kæt/",
+        "level": 1
+      },
+      {
+        "word": "狗",
+        "english": "dog",
+        "phonetic": "/dɔːɡ/",
+        "level": 1
+      },
+      {
+        "word": "鸟",
+        "english": "bird",
+        "phonetic": "/bɜːrd/",
+        "level": 1
+      },
+      {
+        "word": "鱼",
+        "english": "fish",
+        "phonetic": "/fɪʃ/",
+        "level": 1
+      },
+      {
+        "word": "兔子",
+        "english": "rabbit",
+        "phonetic": "/ˈræbɪt/",
+        "level": 1
+      }
+    ],
+    "food": [
+      {
+        "word": "苹果",
+        "english": "apple",
+        "phonetic": "/ˈæpəl/",
+        "level": 1
+      },
+      {
+        "word": "香蕉",
+        "english": "banana",
+        "phonetic": "/bəˈnɑːnə/",
+        "level": 1
+      },
+      {
+        "word": "面包",
+        "english": "bread",
+        "phonetic": "/bred/",
+        "level": 1
+      },
+      {
+        "word": "水",
+        "english": "water",
+        "phonetic": "/ˈwɔːtər/",
+        "level": 1
+      },
+      {
+        "word": "牛奶",
+        "english": "milk",
+        "phonetic": "/mɪlk/",
+        "level": 1
+      }
+    ],
+    "school": [
+      {
+        "word": "书",
+        "english": "book",
+        "phonetic": "/bʊk/",
+        "level": 1
+      },
+      {
+        "word": "铅笔",
+        "english": "pencil",
+        "phonetic": "/ˈpensəl/",
+        "level": 1
+      },
+      {
+        "word": "橡皮",
+        "english": "eraser",
+        "phonetic": "/ɪˈreɪsər/",
+        "level": 1
+      },
+      {
+        "word": "尺子",
+        "english": "ruler",
+        "phonetic": "/ˈruːlər/",
+        "level": 1
+      },
+      {
+        "word": "书包",
+        "english": "schoolbag",
+        "phonetic": "/ˈskuːlbæɡ/",
+        "level": 1
+      }
+    ],
+    "family": [
+      {
+        "word": "妈妈",
+        "english": "mother",
+        "phonetic": "/ˈmʌðər/",
+        "level": 1
+      },
+      {
+        "word": "爸爸",
+        "english": "father",
+        "phonetic": "/ˈfɑːðər/",
+        "level": 1
+      },
+      {
+        "word": "姐姐",
+        "english": "sister",
+        "phonetic": "/ˈsɪstər/",
+        "level": 1
+      },
+      {
+        "word": "哥哥",
+        "english": "brother",
+        "phonetic": "/ˈbrʌðər/",
+        "level": 1
+      },
+      {
+        "word": "爷爷",
+        "english": "grandfather",
+        "phonetic": "/ˈɡrændˌfɑːðər/",
+        "level": 1
+      }
+    ],
+    "body": [
+      {
+        "word": "头",
+        "english": "head",
+        "phonetic": "/hed/",
+        "level": 1
+      },
+      {
+        "word": "手",
+        "english": "hand",
+        "phonetic": "/hænd/",
+        "level": 1
+      },
+      {
+        "word": "脚",
+        "english": "foot",
+        "phonetic": "/fʊt/",
+        "level": 1
+      },
+      {
+        "word": "眼睛",
+        "english": "eye",
+        "phonetic": "/aɪ/",
+        "level": 1
+      },
+      {
+        "word": "嘴巴",
+        "english": "mouth",
+        "phonetic": "/maʊθ/",
+        "level": 1
+      }
+    ],
+    "fruits": [
+      {
+        "word": "苹果",
+        "english": "apple",
+        "phonetic": "/ˈæpəl/",
+        "level": 1
+      },
+      {
+        "word": "香蕉",
+        "english": "banana",
+        "phonetic": "/bəˈnɑːnə/",
+        "level": 1
+      },
+      {
+        "word": "橙子",
+        "english": "orange",
+        "phonetic": "/ˈɔːrɪndʒ/",
+        "level": 1
+      },
+      {
+        "word": "草莓",
+        "english": "strawberry",
+        "phonetic": "/ˈstrɔːberi/",
+        "level": 1
+      },
+      {
+        "word": "葡萄",
+        "english": "grape",
+        "phonetic": "/ɡreɪp/",
+        "level": 1
+      }
+    ],
+    "vegetables": [
+      {
+        "word": "胡萝卜",
+        "english": "carrot",
+        "phonetic": "/ˈkærət/",
+        "level": 1
+      },
+      {
+        "word": "土豆",
+        "english": "potato",
+        "phonetic": "/pəˈteɪtoʊ/",
+        "level": 1
+      },
+      {
+        "word": "西红柿",
+        "english": "tomato",
+        "phonetic": "/təˈmeɪtoʊ/",
+        "level": 1
+      },
+      {
+        "word": "黄瓜",
+        "english": "cucumber",
+        "phonetic": "/ˈkjuːkʌmbər/",
+        "level": 1
+      },
+      {
+        "word": "白菜",
+        "english": "cabbage",
+        "phonetic": "/ˈkæbɪdʒ/",
+        "level": 1
+      }
+    ],
+    "weather": [
+      {
+        "word": "晴天",
+        "english": "sunny",
+        "phonetic": "/ˈsʌni/",
+        "level": 1
+      },
+      {
+        "word": "多云",
+        "english": "cloudy",
+        "phonetic": "/ˈklaʊdi/",
+        "level": 1
+      },
+      {
+        "word": "下雨",
+        "english": "rainy",
+        "phonetic": "/ˈreɪni/",
+        "level": 1
+      },
+      {
+        "word": "下雪",
+        "english": "snowy",
+        "phonetic": "/ˈsnoʊi/",
+        "level": 1
+      },
+      {
+        "word": "刮风",
+        "english": "windy",
+        "phonetic": "/ˈwɪndi/",
+        "level": 1
+      }
+    ],
+    "sports": [
+      {
+        "word": "足球",
+        "english": "football",
+        "phonetic": "/ˈfʊtbɔːl/",
+        "level": 1
+      },
+      {
+        "word": "篮球",
+        "english": "basketball",
+        "phonetic": "/ˈbæskɪtbɔːl/",
+        "level": 1
+      },
+      {
+        "word": "游泳",
+        "english": "swimming",
+        "phonetic": "/ˈswɪmɪŋ/",
+        "level": 1
+      },
+      {
+        "word": "跑步",
+        "english": "running",
+        "phonetic": "/ˈrʌnɪŋ/",
+        "level": 1
+      },
+      {
+        "word": "跳绳",
+        "english": "jump rope",
+        "phonetic": "/dʒʌmp roʊp/",
+        "level": 1
+      }
+    ],
+    "clothes": [
+      {
+        "word": "衬衫",
+        "english": "shirt",
+        "phonetic": "/ʃɜːrt/",
+        "level": 1
+      },
+      {
+        "word": "裤子",
+        "english": "pants",
+        "phonetic": "/pænts/",
+        "level": 1
+      },
+      {
+        "word": "裙子",
+        "english": "skirt",
+        "phonetic": "/skɜːrt/",
+        "level": 1
+      },
+      {
+        "word": "外套",
+        "english": "coat",
+        "phonetic": "/koʊt/",
+        "level": 1
+      },
+      {
+        "word": "袜子",
+        "english": "socks",
+        "phonetic": "/sɑːks/",
+        "level": 1
+      }
+    ],
+    "transportation": [
+      {
+        "word": "汽车",
+        "english": "car",
+        "phonetic": "/kɑːr/",
+        "level": 1
+      },
+      {
+        "word": "公共汽车",
+        "english": "bus",
+        "phonetic": "/bʌs/",
+        "level": 1
+      },
+      {
+        "word": "火车",
+        "english": "train",
+        "phonetic": "/treɪn/",
+        "level": 1
+      },
+      {
+        "word": "飞机",
+        "english": "airplane",
+        "phonetic": "/ˈerpleɪn/",
+        "level": 1
+      },
+      {
+        "word": "自行车",
+        "english": "bicycle",
+        "phonetic": "/ˈbaɪsɪkəl/",
+        "level": 1
+      }
+    ],
+    "jobs": [
+      {
+        "word": "老师",
+        "english": "teacher",
+        "phonetic": "/ˈtiːtʃər/",
+        "level": 1
+      },
+      {
+        "word": "医生",
+        "english": "doctor",
+        "phonetic": "/ˈdɑːktər/",
+        "level": 1
+      },
+      {
+        "word": "警察",
+        "english": "police",
+        "phonetic": "/pəˈliːs/",
+        "level": 1
+      },
+      {
+        "word": "司机",
+        "english": "driver",
+        "phonetic": "/ˈdraɪvər/",
+        "level": 1
+      },
+      {
+        "word": "厨师",
+        "english": "cook",
+        "phonetic": "/kʊk/",
+        "level": 1
+      }
+    ],
+    "furniture": [
+      {
+        "word": "桌子",
+        "english": "table",
+        "phonetic": "/ˈteɪbəl/",
+        "level": 1
+      },
+      {
+        "word": "椅子",
+        "english": "chair",
+        "phonetic": "/tʃer/",
+        "level": 1
+      },
+      {
+        "word": "床",
+        "english": "bed",
+        "phonetic": "/bed/",
+        "level": 1
+      },
+      {
+        "word": "沙发",
+        "english": "sofa",
+        "phonetic": "/ˈsoʊfə/",
+        "level": 1
+      },
+      {
+        "word": "柜子",
+        "english": "cabinet",
+        "phonetic": "/ˈkæbɪnət/",
+        "level": 1
+      }
+    ],
+    "toys": [
+      {
+        "word": "玩具",
+        "english": "toy",
+        "phonetic": "/tɔɪ/",
+        "level": 1
+      },
+      {
+        "word": "娃娃",
+        "english": "doll",
+        "phonetic": "/dɑːl/",
+        "level": 1
+      },
+      {
+        "word": "积木",
+        "english": "blocks",
+        "phonetic": "/blɑːks/",
+        "level": 1
+      },
+      {
+        "word": "气球",
+        "english": "balloon",
+        "phonetic": "/bəˈluːn/",
+        "level": 1
+      },
+      {
+        "word": "风筝",
+        "english": "kite",
+        "phonetic": "/kaɪt/",
+        "level": 1
+      }
+    ],
+    "emotions": [
+      {
+        "word": "快乐",
+        "english": "happy",
+        "phonetic": "/ˈhæpi/",
+        "level": 1
+      },
+      {
+        "word": "伤心",
+        "english": "sad",
+        "phonetic": "/sæd/",
+        "level": 1
+      },
+      {
+        "word": "生气",
+        "english": "angry",
+        "phonetic": "/ˈæŋɡri/",
+        "level": 1
+      },
+      {
+        "word": "害怕",
+        "english": "scared",
+        "phonetic": "/skerd/",
+        "level": 1
+      },
+      {
+        "word": "惊喜",
+        "english": "surprised",
+        "phonetic": "/sərˈpraɪzd/",
+        "level": 1
+      }
+    ],
+    "subjects": [
+      {
+        "word": "英语",
+        "english": "English",
+        "phonetic": "/ˈɪŋɡlɪʃ/",
+        "level": 1
+      },
+      {
+        "word": "数学",
+        "english": "math",
+        "phonetic": "/mæθ/",
+        "level": 1
+      },
+      {
+        "word": "科学",
+        "english": "science",
+        "phonetic": "/ˈsaɪəns/",
+        "level": 1
+      },
+      {
+        "word": "音乐",
+        "english": "music",
+        "phonetic": "/ˈmjuːzɪk/",
+        "level": 1
+      },
+      {
+        "word": "美术",
+        "english": "art",
+        "phonetic": "/ɑːrt/",
+        "level": 1
+      }
+    ],
+    "festivals": [
+      {
+        "word": "新年",
+        "english": "New Year",
+        "phonetic": "/njuː jɪr/",
+        "level": 1
+      },
+      {
+        "word": "圣诞节",
+        "english": "Christmas",
+        "phonetic": "/ˈkrɪsməs/",
+        "level": 1
+      },
+      {
+        "word": "生日",
+        "english": "birthday",
+        "phonetic": "/ˈbɜːrθdeɪ/",
+        "level": 1
+      },
+      {
+        "word": "万圣节",
+        "english": "Halloween",
+        "phonetic": "/ˌhæləˈwiːn/",
+        "level": 1
+      },
+      {
+        "word": "感恩节",
+        "english": "Thanksgiving",
+        "phonetic": "/ˌθæŋksˈɡɪvɪŋ/",
+        "level": 1
+      }
+    ],
+    "rooms": [
+      {
+        "word": "卧室",
+        "english": "bedroom",
+        "phonetic": "/ˈbedruːm/",
+        "level": 1
+      },
+      {
+        "word": "厨房",
+        "english": "kitchen",
+        "phonetic": "/ˈkɪtʃən/",
+        "level": 1
+      },
+      {
+        "word": "浴室",
+        "english": "bathroom",
+        "phonetic": "/ˈbæθruːm/",
+        "level": 1
+      },
+      {
+        "word": "客厅",
+        "english": "living room",
+        "phonetic": "/ˈlɪvɪŋ ruːm/",
+        "level": 1
+      },
+      {
+        "word": "餐厅",
+        "english": "dining room",
+        "phonetic": "/ˈdaɪnɪŋ ruːm/",
+        "level": 1
+      }
+    ],
+    "daily_items": [
+      {
+        "word": "牙刷",
+        "english": "toothbrush",
+        "phonetic": "/ˈtuːθbrʌʃ/",
+        "level": 1
+      },
+      {
+        "word": "毛巾",
+        "english": "towel",
+        "phonetic": "/ˈtaʊəl/",
+        "level": 1
+      },
+      {
+        "word": "梳子",
+        "english": "comb",
+        "phonetic": "/koʊm/",
+        "level": 1
+      },
+      {
+        "word": "钥匙",
+        "english": "key",
+        "phonetic": "/kiː/",
+        "level": 1
+      },
+      {
+        "word": "手机",
+        "english": "phone",
+        "phonetic": "/foʊn/",
+        "level": 1
+      }
+    ],
+    "actions": [
+      {
+        "word": "吃饭",
+        "english": "eat",
+        "phonetic": "/iːt/",
+        "level": 1
+      },
+      {
+        "word": "喝水",
+        "english": "drink",
+        "phonetic": "/drɪŋk/",
+        "level": 1
+      },
+      {
+        "word": "睡觉",
+        "english": "sleep",
+        "phonetic": "/sliːp/",
+        "level": 1
+      },
+      {
+        "word": "跳舞",
+        "english": "dance",
+        "phonetic": "/dæns/",
+        "level": 1
+      },
+      {
+        "word": "唱歌",
+        "english": "sing",
+        "phonetic": "/sɪŋ/",
+        "level": 1
+      }
+    ],
+    "adjectives": [
+      {
+        "word": "大",
+        "english": "big",
+        "phonetic": "/bɪɡ/",
+        "level": 1
+      },
+      {
+        "word": "小",
+        "english": "small",
+        "phonetic": "/smɔːl/",
+        "level": 1
+      },
+      {
+        "word": "高",
+        "english": "tall",
+        "phonetic": "/tɔːl/",
+        "level": 1
+      },
+      {
+        "word": "矮",
+        "english": "short",
+        "phonetic": "/ʃɔːrt/",
+        "level": 1
+      },
+      {
+        "word": "热",
+        "english": "hot",
+        "phonetic": "/hɑːt/",
+        "level": 1
+      },
+      {
+        "word": "冷",
+        "english": "cold",
+        "phonetic": "/koʊld/",
+        "level": 1
+      },
+      {
+        "word": "好",
+        "english": "good",
+        "phonetic": "/ɡʊd/",
+        "level": 1
+      },
+      {
+        "word": "坏",
+        "english": "bad",
+        "phonetic": "/bæd/",
+        "level": 1
+      }
+    ],
+    "time": [
+      {
+        "word": "早上",
+        "english": "morning",
+        "phonetic": "/ˈmɔːrnɪŋ/",
+        "level": 1
+      },
+      {
+        "word": "中午",
+        "english": "noon",
+        "phonetic": "/nuːn/",
+        "level": 1
+      },
+      {
+        "word": "下午",
+        "english": "afternoon",
+        "phonetic": "/ˌæftərˈnuːn/",
+        "level": 1
+      },
+      {
+        "word": "晚上",
+        "english": "evening",
+        "phonetic": "/ˈiːvnɪŋ/",
+        "level": 1
+      },
+      {
+        "word": "夜晚",
+        "english": "night",
+        "phonetic": "/naɪt/",
+        "level": 1
+      }
+    ],
+    "directions": [
+      {
+        "word": "上",
+        "english": "up",
+        "phonetic": "/ʌp/",
+        "level": 1
+      },
+      {
+        "word": "下",
+        "english": "down",
+        "phonetic": "/daʊn/",
+        "level": 1
+      },
+      {
+        "word": "左",
+        "english": "left",
+        "phonetic": "/left/",
+        "level": 1
+      },
+      {
+        "word": "右",
+        "english": "right",
+        "phonetic": "/raɪt/",
+        "level": 1
+      },
+      {
+        "word": "前",
+        "english": "front",
+        "phonetic": "/frʌnt/",
+        "level": 1
+      },
+      {
+        "word": "后",
+        "english": "back",
+        "phonetic": "/bæk/",
+        "level": 1
+      }
+    ],
+    "more_animals": [
+      {
+        "word": "大象",
+        "english": "elephant",
+        "phonetic": "/ˈelɪfənt/",
+        "level": 1
+      },
+      {
+        "word": "长颈鹿",
+        "english": "giraffe",
+        "phonetic": "/dʒəˈræf/",
+        "level": 1
+      },
+      {
+        "word": "老虎",
+        "english": "tiger",
+        "phonetic": "/ˈtaɪɡər/",
+        "level": 1
+      },
+      {
+        "word": "狮子",
+        "english": "lion",
+        "phonetic": "/ˈlaɪən/",
+        "level": 1
+      },
+      {
+        "word": "熊猫",
+        "english": "panda",
+        "phonetic": "/ˈpændə/",
+        "level": 1
+      },
+      {
+        "word": "猴子",
+        "english": "monkey",
+        "phonetic": "/ˈmʌŋki/",
+        "level": 1
+      }
+    ],
+    "more_food": [
+      {
+        "word": "汉堡",
+        "english": "hamburger",
+        "phonetic": "/ˈhæmbɜːrɡər/",
+        "level": 1
+      },
+      {
+        "word": "披萨",
+        "english": "pizza",
+        "phonetic": "/ˈpiːtsə/",
+        "level": 1
+      },
+      {
+        "word": "冰淇淋",
+        "english": "ice cream",
+        "phonetic": "/aɪs kriːm/",
+        "level": 1
+      },
+      {
+        "word": "巧克力",
+        "english": "chocolate",
+        "phonetic": "/ˈtʃɔːklət/",
+        "level": 1
+      },
+      {
+        "word": "蛋糕",
+        "english": "cake",
+        "phonetic": "/keɪk/",
+        "level": 1
+      },
+      {
+        "word": "饼干",
+        "english": "cookie",
+        "phonetic": "/ˈkʊki/",
+        "level": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词寻字</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Long+Cang&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF1E6 100%);
+            padding: 15px;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(255, 178, 137, 0.2);
+            padding: 20px;
+            max-width: 480px;
+            width: 100%;
+            border: 6px solid #FFD6BA;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #FFE5D9;
+            border-radius: 16px;
+        }
+        
+        .title {
+            color: #FF9A76;
+            font-size: 32px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+        }
+        
+        .subtitle {
+            color: #FF7E67;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .word-cards {
+            display: block;
+            margin-bottom: 32px;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .word-card {
+            position: relative;
+            background: linear-gradient(135deg, #FFF1E6 0%, #FFECD9 100%);
+            border-radius: 20px;
+            width: 100%;
+            padding: 20px;
+            border: 4px solid #FFD6BA;
+            box-shadow: 0 8px 16px rgba(255, 178, 137, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+            min-height: 120px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 154, 118, 0.4);
+        }
+        
+        .word-icon {
+            font-size: 36px;
+            color: #FF9A76;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFE5D9;
+            border-radius: 15px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .word-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .word-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            min-width: 0;
+            cursor: pointer;
+            height: 100%;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .word-content:hover {
+            transform: scale(1.02);
+        }
+        
+        .word-content:active {
+            transform: scale(0.98);
+        }
+        
+        .english {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FF9A76;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+            margin: 0;
+            white-space: nowrap;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .english:hover {
+            transform: scale(1.05);
+        }
+        
+        .phonetic {
+            font-size: 18px;
+            color: #FF7E67;
+            margin: 0;
+            padding: 8px 15px;
+            background: #FFF5F0;
+            border-radius: 10px;
+            white-space: nowrap;
+            align-self: center;
+        }
+        
+        .speaker-button {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: #FFE5D9;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            color: #FF9A76;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 154, 118, 0.2);
+        }
+        
+        .speaker-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #FFD6BA;
+        }
+        
+        .pinyin {
+            font-size: 18px;
+            color: #9d68c7;
+            margin-top: 15px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: translateY(10px);
+        }
+        
+        .completed .pinyin {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            background: linear-gradient(135deg, #FFF1E6 0%, #FFE5D9 100%);
+            padding: 20px;
+            border-radius: 20px;
+            border: 4px solid #FFD6BA;
+        }
+        
+        .cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #FF7E67;
+            border: 3px solid #FFE5D9;
+            box-shadow: 0 4px 8px rgba(255, 154, 118, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-family: 'JingNanBoBoHei', 'Microsoft YaHei', sans-serif;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        .cell:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 24px rgba(255, 154, 118, 0.2);
+            color: #FF9A76;
+            border-color: #FFD6BA;
+        }
+        
+        .cell.selected {
+            background: #FF9A76;
+            color: white;
+            transform: scale(1.1);
+            border-color: #FF9A76;
+        }
+        
+        .cell.correct {
+            background: #FFB4A2;
+            color: white;
+            border-color: #FFB4A2;
+            animation: celebration 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        @keyframes celebration {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+        
+        .message.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(15px);
+        }
+        
+        .message.success {
+            background: linear-gradient(135deg, #FFB4A2 0%, #FF9A76 100%);
+        }
+        
+        .message.error {
+            background: linear-gradient(135deg, #FF7E67 0%, #FF6B6B 100%);
+        }
+        
+        /* 添加响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                border-width: 4px;
+            }
+            
+            .header {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .word-card {
+                padding: 15px;
+                border-width: 3px;
+            }
+            
+            .word-icon {
+                font-size: 28px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .english {
+                font-size: 28px;
+            }
+            
+            .phonetic {
+                font-size: 16px;
+                padding: 4px 8px;
+            }
+            
+            .speaker-button {
+                font-size: 18px;
+                padding: 8px;
+            }
+            
+            .board {
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .cell {
+                font-size: 24px;
+                padding: 10px;
+            }
+        }
+        
+        /* 添加字体声明 */
+        @font-face {
+            font-family: 'JingNanBoBoHei';
+            src: url('https://cdn.jsdelivr.net/gh/googlefonts/noto-cjk@main/Sans/Variable/TTF/NotoSansCJKsc-VF.ttf') format('truetype');
+            /* 注意：这里需要替换为实际的荆南字坊波波黑字体文件路径 */
+        }
+        
+        /* 修改选项卡片的字体样式 */
+        .cell {
+            font-size: 32px; /* 增大字号 */
+            line-height: 1.2;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 480px) {
+            .cell {
+                font-size: 24px;
+            }
+        }
+        
+        .stats {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFF1E6 0%, #FFE5D9 100%);
+            border-radius: 15px;
+            border: 3px solid #FFD6BA;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(255, 154, 118, 0.1);
+        }
+        
+        .stat-label {
+            color: #FF7E67;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .stat-value {
+            color: #FF9A76;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+    <audio id="correctSound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrongSound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <div class="message" id="message"></div>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">英文寻字</h1>
+            <p class="subtitle">找出对应的中文</p>
+        </div>
+        
+        <div class="word-cards" id="word-cards">
+        </div>
+        
+        <div class="board" id="board">
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-label">正确次数:</span>
+                <span class="stat-value" id="correctCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">错误次数:</span>
+                <span class="stat-value" id="totalCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">正确率:</span>
+                <span class="stat-value" id="accuracy">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allWords = [
+            // Numbers & Colors
+            { word: '一', english: 'one', phonetic: '/wʌn/' },
+            { word: '红色', english: 'red', phonetic: '/red/' },
+            { word: '蓝色', english: 'blue', phonetic: '/bluː/' },
+            
+            // Animals
+            { word: '猫', english: 'cat', phonetic: '/kæt/' },
+            { word: '狗', english: 'dog', phonetic: '/dɔːɡ/' },
+            { word: '鸟', english: 'bird', phonetic: '/bɜːrd/' },
+            
+            // Food & Drinks
+            { word: '苹果', english: 'apple', phonetic: '/ˈæpəl/' },
+            { word: '香蕉', english: 'banana', phonetic: '/bəˈnɑːnə/' },
+            { word: '水', english: 'water', phonetic: '/ˈwɔːtər/' },
+            
+            // School Items
+            { word: '书', english: 'book', phonetic: '/bʊk/' },
+            { word: '铅笔', english: 'pencil', phonetic: '/ˈpensəl/' },
+            { word: '橡皮', english: 'eraser', phonetic: '/ɪˈreɪsər/' },
+            
+            // Family Members
+            { word: '妈妈', english: 'mother', phonetic: '/ˈmʌðər/' },
+            { word: '爸爸', english: 'father', phonetic: '/ˈfɑːðər/' },
+            { word: '姐姐', english: 'sister', phonetic: '/ˈsɪstər/' },
+            
+            // Body Parts
+            { word: '头', english: 'head', phonetic: '/hed/' },
+            { word: '手', english: 'hand', phonetic: '/hænd/' },
+            { word: '脚', english: 'foot', phonetic: '/fʊt/' },
+            
+            // Nature
+            { word: '太阳', english: 'sun', phonetic: '/sʌn/' },
+            { word: '月亮', english: 'moon', phonetic: '/muːn/' },
+            { word: '星星', english: 'star', phonetic: '/stɑːr/' },
+            
+            // Weather
+            { word: '雨', english: 'rain', phonetic: '/reɪn/' },
+            { word: '雪', english: 'snow', phonetic: '/snoʊ/' },
+            { word: '风', english: 'wind', phonetic: '/wɪnd/' },
+            
+            // Actions
+            { word: '跑步', english: 'run', phonetic: '/rʌn/' },
+            { word: '走路', english: 'walk', phonetic: '/wɔːk/' },
+            { word: '跳跃', english: 'jump', phonetic: '/dʒʌmp/' },
+            
+            // Time
+            { word: '今天', english: 'today', phonetic: '/təˈdeɪ/' },
+            { word: '明天', english: 'tomorrow', phonetic: '/təˈmɑːroʊ/' },
+            { word: '昨天', english: 'yesterday', phonetic: '/ˈjestərdeɪ/' },
+            
+            // Feelings
+            { word: '开心', english: 'happy', phonetic: '/ˈhæpi/' },
+            { word: '伤心', english: 'sad', phonetic: '/sæd/' },
+            { word: '生气', english: 'angry', phonetic: '/ˈæŋɡri/' },
+            
+            // Clothes
+            { word: '衣服', english: 'clothes', phonetic: '/kloʊðz/' },
+            { word: '鞋子', english: 'shoes', phonetic: '/ʃuːz/' },
+            { word: '帽子', english: 'hat', phonetic: '/hæt/' },
+            
+            // Places
+            { word: '学校', english: 'school', phonetic: '/skuːl/' },
+            { word: '公园', english: 'park', phonetic: '/pɑːrk/' },
+            { word: '商店', english: 'shop', phonetic: '/ʃɑːp/' },
+            
+            // Transportation
+            { word: '汽车', english: 'car', phonetic: '/kɑːr/' },
+            { word: '自行车', english: 'bike', phonetic: '/baɪk/' },
+            { word: '公共汽车', english: 'bus', phonetic: '/bʌs/' }
+            
+            // ... 继续添加更多单词 ...
+        ];
+
+        // 随机从词汇列表中选择3个英文单词
+        function getRandomWords() {
+            const shuffled = allWords.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, 3);
+        }
+
+        const wordData = {};
+
+        // 添加发音功能
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8; // 语速稍慢一些
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 添加图标映射对象
+        const wordIcons = {
+            'one': 'fa-1',
+            'red': 'fa-palette',
+            'blue': 'fa-palette',
+            'cat': 'fa-cat',
+            'dog': 'fa-dog',
+            'bird': 'fa-dove',
+            'apple': 'fa-apple-whole',
+            'banana': 'fa-apple-whole',
+            'water': 'fa-glass-water',
+            'book': 'fa-book',
+            'pencil': 'fa-pencil',
+            'eraser': 'fa-eraser',
+            'mother': 'fa-person-dress',
+            'father': 'fa-person',
+            'sister': 'fa-person-dress',
+            'head': 'fa-head',
+            'hand': 'fa-hand',
+            'foot': 'fa-shoe-prints',
+            'sun': 'fa-sun',
+            'moon': 'fa-moon',
+            'star': 'fa-star',
+            'rain': 'fa-cloud-rain',
+            'snow': 'fa-snowflake',
+            'wind': 'fa-wind',
+            'run': 'fa-person-running',
+            'walk': 'fa-person-walking',
+            'jump': 'fa-person-running',
+            'today': 'fa-calendar-day',
+            'tomorrow': 'fa-calendar',
+            'yesterday': 'fa-calendar',
+            'happy': 'fa-face-smile',
+            'sad': 'fa-face-sad-tear',
+            'angry': 'fa-face-angry',
+            'clothes': 'fa-shirt',
+            'shoes': 'fa-shoe-prints',
+            'hat': 'fa-hat-cowboy',
+            'school': 'fa-school',
+            'park': 'fa-tree',
+            'shop': 'fa-shop',
+            'car': 'fa-car',
+            'bike': 'fa-bicycle',
+            'bus': 'fa-bus'
+        };
+
+        // 修改创建单词卡片的函数
+        function createWordCards(words) {
+            const wordCards = document.getElementById('word-cards');
+            wordCards.innerHTML = '';
+            
+            const wordObj = words[0];
+            wordData[wordObj.english] = wordObj.word;
+            
+            const wordCard = document.createElement('div');
+            wordCard.className = 'word-card';
+            wordCard.setAttribute('data-word', wordObj.english);
+            
+            // 添加图标
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'word-icon';
+            const iconClass = wordIcons[wordObj.english] || 'fa-circle-question';
+            iconDiv.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+            wordCard.appendChild(iconDiv);
+            
+            // 创建单词内容容器
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'word-content';
+            // 添加点击事件
+            contentDiv.onclick = () => speakWord(wordObj.english);
+            
+            const englishDiv = document.createElement('div');
+            englishDiv.className = 'english';
+            englishDiv.textContent = wordObj.english;
+            contentDiv.appendChild(englishDiv);
+            
+            const phoneticDiv = document.createElement('div');
+            phoneticDiv.className = 'phonetic';
+            phoneticDiv.textContent = wordObj.phonetic;
+            contentDiv.appendChild(phoneticDiv);
+            
+            wordCard.appendChild(contentDiv);
+            
+            wordCards.appendChild(wordCard);
+        }
+
+        // 创建中文选择板
+        function createBoard(words) {
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+            
+            // 获取正确答案和额外的干扰选项
+            const correctWord = words[0].word;
+            let options = [correctWord];
+            
+            // 添加3个随机干扰选项
+            while (options.length < 4) {
+                const randomWord = allWords[Math.floor(Math.random() * allWords.length)].word;
+                if (!options.includes(randomWord)) {
+                    options.push(randomWord);
+                }
+            }
+            
+            // 打乱选项顺序
+            options = shuffle(options);
+            
+            // 创建选项卡片
+            options.forEach(chinese => {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.textContent = chinese;
+                cell.addEventListener('click', () => handleCellClick(cell));
+                board.appendChild(cell);
+            });
+        }
+
+        let selectedCells = [];
+        let completedWords = new Set();
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type} show`;
+            setTimeout(() => {
+                message.className = 'message';
+            }, 2000);
+        }
+
+        function handleCellClick(cell) {
+            if (cell.classList.contains('correct')) return;
+
+            // 移除之前选中的样式
+            if (selectedCells.length > 0) {
+                selectedCells[0].classList.remove('selected');
+                selectedCells = [];
+            }
+
+            // 选中当前单元格
+            cell.classList.add('selected');
+            selectedCells.push(cell);
+            
+            // 立即检查匹配
+            setTimeout(() => checkMatch(), 100); // 添加小延迟让用户看到选中效果
+        }
+
+        // 添加播放声音的函数
+        function playSound(type) {
+            const sound = document.getElementById(type === 'correct' ? 'correctSound' : 'wrongSound');
+            sound.currentTime = 0; // 重置音频到开始位置
+            sound.play().catch(error => console.log('播放声音失败:', error));
+        }
+
+        // 修改计数变量
+        let correctCount = 0;
+        let wrongCount = 0;  // 改为错误次数
+
+        // 更新统计显示的函数
+        function updateStats() {
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('totalCount').textContent = wrongCount;  // 显示错误次数
+            const totalAttempts = correctCount + wrongCount;
+            const accuracy = totalAttempts === 0 ? 0 : Math.round((correctCount / totalAttempts) * 100);
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 修改 checkMatch 函数中的计数逻辑
+        function checkMatch() {
+            const selectedChinese = selectedCells[0].textContent;
+            let matched = false;
+
+            for (const [english, chinese] of Object.entries(wordData)) {
+                if (!completedWords.has(english) && chinese === selectedChinese) {
+                    matched = true;
+                    correctCount++; // 增加正确次数
+                    const wordCard = document.querySelector(`[data-word="${english}"]`);
+                    wordCard.classList.add('completed');
+                    selectedCells[0].classList.add('correct');
+                    completedWords.add(english);
+                    showMessage('匹配成功!', 'success');
+                    playSound('correct');
+                    
+                    // 显示拼音
+                    const pinyinDiv = wordCard.querySelector('.pinyin');
+                    if (pinyinDiv) {
+                        pinyinDiv.style.opacity = '1';
+                    }
+
+                    // 更新统计
+                    updateStats();
+
+                    // 延迟后开始新一轮
+                    setTimeout(() => {
+                        startGame();
+                    }, 2000);
+                    break;
+                }
+            }
+
+            if (!matched) {
+                wrongCount++; // 增加错误次数
+                showMessage('匹配失败，请再试一次', 'error');
+                playSound('wrong');
+                updateStats();
+            }
+
+            selectedCells[0].classList.remove('selected');
+            selectedCells = [];
+        }
+
+        // 修改获取单词的方式
+        async function loadWordsFromJSON() {
+            try {
+                const response = await fetch('elementary_words.json');
+                const data = await response.json();
+                
+                // 将所有分类的单词合并成一个数组
+                const allWords = [];
+                Object.values(data.categories).forEach(category => {
+                    allWords.push(...category);
+                });
+                
+                return allWords;
+            } catch (error) {
+                console.error('Error loading words:', error);
+                // 如果加载失败，使用默认词库
+                return allWords;
+            }
+        }
+
+        // 修改 startGame 函数，添加统计初始化
+        async function startGame() {
+            // 保持现有的计数，不重置
+            // correctCount = 0;
+            // totalCount = 0;
+            completedWords = new Set();
+            selectedCells = [];
+            
+            let words = await loadWordsFromJSON();
+            if (!words) {
+                words = allWords;
+            }
+            
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            createWordCards([randomWord]);
+            createBoard([randomWord]);
+            updateStats(); // 更新统计显示
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startGame();
+        });
+
+        // 添加新的函数来获取单词数据
+        async function fetchWordsFromAPI() {
+            try {
+                // 这里使用 WordsAPI 的示例，需要替换为你的 API key
+                const response = await fetch('https://wordsapiv1.p.rapidapi.com/words/?random=true&partOfSpeech=noun&limit=100', {
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': 'YOUR_API_KEY',
+                        'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+                    }
+                });
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching words:', error);
+                return null;
+            }
+        }
+
+        // 或者使用 Google Translate API
+        async function translateWord(word) {
+            try {
+                const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=YOUR_API_KEY`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        q: word,
+                        source: 'en',
+                        target: 'zh-CN',
+                        format: 'text'
+                    })
+                });
+                const data = await response.json();
+                return data.data.translations[0].translatedText;
+            } catch (error) {
+                console.error('Error translating word:', error);
+                return null;
+            }
+        }
+    </script>
+</body>
+</html>
